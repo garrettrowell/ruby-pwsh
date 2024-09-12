@@ -285,10 +285,12 @@ module Pwsh
             value    = Regexp.last_match(2)
             if environment.include?(env_name) || environment.include?(env_name.to_sym)
               # TODO: log a warning for "Overriding environment setting '#{env_name}' with '#{value}'"
+              Puppet.info("Overriding environment setting '#{env_name}' with '#{value}'")
             end
             environment[env_name] = value
           else # rubocop:disable Style/EmptyElse
             # TODO: log a warning for "Cannot understand environment setting #{setting.inspect}"
+            Puppet.info("Cannot understand environment setting #{setting.inspect}")
           end
         end
       end
