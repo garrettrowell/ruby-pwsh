@@ -304,7 +304,7 @@ module Pwsh
           # another single quote i.e. a value of foo'bar turns into 'foo''bar' when single quoted.
           ps_name  = name.gsub('\'', '\'\'')
           ps_value = value.gsub('\'', '\'\'')
-          additional_environment_variables += " '#{ps_name}' = '#{ps_value}';"
+          additional_environment_variables += " '#{ps_name}' = \"#{ps_value}\";"
         end
       end
       additional_environment_variables += '}'
