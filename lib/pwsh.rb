@@ -279,6 +279,7 @@ module Pwsh
       # https://github.com/puppetlabs/puppet/blob/a9f77d71e992fc2580de7705847e31264e0fbebe/lib/puppet/provider/exec.rb#L35-L49
       environment = {}
       if (envlist = environment_variables)
+        Puppet.info('envlist = environment_variables')
         envlist = [envlist] unless envlist.is_a? Array
         envlist.each do |setting|
           if setting =~ /^(\w+)=((.|\n)+)$/
@@ -307,6 +308,7 @@ module Pwsh
         end
       end
       additional_environment_variables += '}'
+      Puppet.info("make_ps_code additional_environment_variables => #{additional_environment_variables}")
 
       # PS Side expects Invoke-PowerShellUserCode is always the return value here
       # TODO: Refactor to use <<~ as soon as we can :sob:
