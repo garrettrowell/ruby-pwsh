@@ -257,6 +257,7 @@ module Pwsh
     # @param environment_variables [Array] Any overrides for environment variables you want to specify
     # @return [String] PowerShell code to be executed via the manager with appropriate params per config.
     def make_ps_code(powershell_code, timeout_ms = nil, working_dir = nil, environment_variables = [])
+      Puppet.info("make_ps_code environment_variables => #{environment_variables.inspect}")
       begin
         # Zero timeout is a special case. Other modules sometimes treat this
         # as an infinite timeout. We don't support infinite, so for the case
