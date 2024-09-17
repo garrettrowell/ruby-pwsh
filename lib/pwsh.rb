@@ -198,6 +198,7 @@ module Pwsh
       # err is drained stderr pipe (not captured by redirection inside PS)
       # or during a failure, a Ruby callstack array
       out, native_stdout, err = exec_read_result(code)
+      Puppet.info("lib/pwsh.rb execute_code => #{code.inspect}")
 
       # an error was caught during execution that has invalidated any results
       return { exitcode: -1, stderr: err } if out.nil? && !@usable
